@@ -7,6 +7,11 @@
     <groupId>com.ironhead</groupId>
     <artifactId>BitPulse</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>binance-feeder</module>
+        <module>cryptocompare-feeder</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
