@@ -1,6 +1,6 @@
 package infrastructure.ports;
 
-import com.bitpulse.binancefeeder.domain.BinanceResponse;
+import domain.BinanceResponse;
 
 public interface DeserializerPort {
     BinanceResponse deserialize(String data);

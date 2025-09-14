@@ -1,7 +1,7 @@
 package infrastructure.adapters;
 
-import com.bitpulse.binancefeeder.domain.BinanceResponse;
-import com.bitpulse.binancefeeder.domain.Candlestick;
+import domain.BinanceResponse;
+import domain.Candlestick;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

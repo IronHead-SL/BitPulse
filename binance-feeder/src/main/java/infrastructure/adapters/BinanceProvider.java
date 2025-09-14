@@ -1,8 +1,8 @@
 package infrastructure.adapters;
 
-import com.bitpulse.binancefeeder.domain.BinanceResponse;
-import com.bitpulse.binancefeeder.infrastructure.ports.DeserializerPort;
-import com.bitpulse.binancefeeder.infrastructure.ports.FetchPort;
+import domain.BinanceResponse;
+import infrastructure.ports.DeserializerPort;
+import infrastructure.ports.FetchPort;
 
 import java.net.http.HttpClient;
 import java.time.Duration;
