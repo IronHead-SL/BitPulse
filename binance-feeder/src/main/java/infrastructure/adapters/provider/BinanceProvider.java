@@ -1,4 +1,4 @@
-package infrastructure.adapters;
+package infrastructure.adapters.provider;
 
 import domain.BinanceResponse;
 import infrastructure.ports.DeserializerPort;

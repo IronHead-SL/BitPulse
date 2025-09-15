@@ -2,37 +2,35 @@ package domain;
 
 import java.time.Instant;
 
-public class Candlestick {
-        private final long klineOpenTime;
+public class Bitcoin {
         private final double openPrice;
         private final double highPrice;
         private final double lowPrice;
         private final double closePrice;
         private final double volume;
-        private final long klineCloseTime;
         private final double quoteAssetVolume;
         private final int numberOfTrades;
         private final double takerBuyBaseAssetVolume;
         private final double takerBuyQuoteAssetVolume;
+        private final Instant candlestickOpenTime;
+        private final Instant candlestickCloseTime;
         private final Instant ts = Instant.now();
-        private final String ss = "news-api";
+        private final String ss = "Binance";
 
-    public Candlestick(long klineOpenTime, double openPrice, double highPrice, double lowPrice, double closePrice, double volume, long klineCloseTime, double quoteAssetVolume, int numberOfTrades, double takerBuyBaseAssetVolume, double takerBuyQuoteAssetVolume) {
-        this.klineOpenTime = klineOpenTime;
+    public Bitcoin(double openPrice, double highPrice, double lowPrice, double closePrice, double volume, double quoteAssetVolume,
+                   int numberOfTrades, double takerBuyBaseAssetVolume, double takerBuyQuoteAssetVolume, Instant candlestickOpenTime,
+                   Instant candlestickCloseTime) {
         this.openPrice = openPrice;
         this.highPrice = highPrice;
         this.lowPrice = lowPrice;
         this.closePrice = closePrice;
         this.volume = volume;
-        this.klineCloseTime = klineCloseTime;
         this.quoteAssetVolume = quoteAssetVolume;
         this.numberOfTrades = numberOfTrades;
         this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
         this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
-    }
-
-    public long getKlineOpenTime() {
-        return klineOpenTime;
+        this.candlestickOpenTime = candlestickOpenTime;
+        this.candlestickCloseTime = candlestickCloseTime;
     }
 
     public double getOpenPrice() {
@@ -55,10 +53,6 @@ public class Candlestick {
         return volume;
     }
 
-    public long getKlineCloseTime() {
-        return klineCloseTime;
-    }
-
     public double getQuoteAssetVolume() {
         return quoteAssetVolume;
     }
@@ -73,6 +67,14 @@ public class Candlestick {
 
     public double getTakerBuyQuoteAssetVolume() {
         return takerBuyQuoteAssetVolume;
+    }
+
+    public Instant getCandlestickOpenTime() {
+        return candlestickOpenTime;
+    }
+
+    public Instant getCandlestickCloseTime() {
+        return candlestickCloseTime;
     }
 
     public Instant getTs() {

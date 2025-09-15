@@ -1,5 +1,5 @@
-import infrastructure.adapters.BinanceProvider;
-import infrastructure.adapters.ContinuousBinanceFetcher;
+import infrastructure.adapters.provider.BinanceProvider;
+import infrastructure.adapters.provider.ContinuousBinanceFetcher;
 
 public class Main {
     public static void main(String[] args) {

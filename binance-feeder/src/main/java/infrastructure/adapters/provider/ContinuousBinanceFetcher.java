@@ -1,7 +1,7 @@
-package infrastructure.adapters;
+package infrastructure.adapters.provider;
 
 import domain.BinanceResponse;
-import domain.Candlestick;
+import domain.Bitcoin;
 
 import java.io.*;
 import java.time.Instant;
@@ -10,12 +10,12 @@ import java.util.concurrent.*;
 public class ContinuousBinanceFetcher {
     private final BinanceProvider provider;
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-    private long lastKlineCloseTime;
+    private long candlestickCloseTime;
     private final String checkpointFile = "last_kline.txt";
 
     public ContinuousBinanceFetcher(BinanceProvider provider) {
         this.provider = provider;
-        this.lastKlineCloseTime = loadLastKline();
+        this.candlestickCloseTime = loadLastKline();
     }
 
     public void start() {
@@ -29,12 +29,12 @@ public class ContinuousBinanceFetcher {
 
     private void fetchAndSave() {
         try {
-            provider.fetcher.setStartTime(String.valueOf(lastKlineCloseTime + 1));
+            provider.fetcher.setStartTime(String.valueOf(candlestickCloseTime + 1));
             provider.fetcher.setEndTime(String.valueOf(Instant.now().toEpochMilli()));
             BinanceResponse response = provider.provideNews();
-            if (!response.candlesticks().isEmpty()) {
-                Candlestick last = response.candlesticks().get(response.candlesticks().size() - 1);
-                lastKlineCloseTime = last.getKlineCloseTime();
+            if (!response.bitcoins().isEmpty()) {
+                Bitcoin last = response.bitcoins().get(response.bitcoins().size() - 1);
+                candlestickCloseTime = last.getCandlestickCloseTime().toEpochMilli();
                 saveLastKline();
             }
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class ContinuousBinanceFetcher {
 
     private void saveLastKline() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(checkpointFile))) {
-            writer.write(String.valueOf(lastKlineCloseTime));
+            writer.write(String.valueOf(candlestickCloseTime));
         } catch (IOException e) {
             e.printStackTrace();
         }

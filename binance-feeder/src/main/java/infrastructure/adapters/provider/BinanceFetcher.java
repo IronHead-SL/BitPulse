@@ -1,4 +1,4 @@
-package infrastructure.adapters;
+package infrastructure.adapters.provider;
 
 import java.net.URI;
 import java.net.http.HttpClient;

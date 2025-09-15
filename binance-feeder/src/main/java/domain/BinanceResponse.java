@@ -2,7 +2,4 @@ package domain;
 
 import java.util.List;
 
-public record BinanceResponse(
-        List<Candlestick> candlesticks
-) {
-}
+public record BinanceResponse(List<Bitcoin> bitcoins) {}
